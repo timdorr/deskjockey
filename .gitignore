@@ -1,0 +1,11 @@
+.idea
+*.tmproj
+*.tmproject
+.DS_Store
+.env
+.gemrc
+.sass-cache
+/.bundle
+/log/*
+/tmp/*
+public/assets

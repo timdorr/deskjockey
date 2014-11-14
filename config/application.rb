@@ -1,0 +1,27 @@
+require File.expand_path("../boot", __FILE__)
+
+# require "rails/all"
+require "action_controller/railtie"
+# require "action_mailer/railtie"
+require "sprockets/railtie"
+# require "rails/test_unit/railtie"
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
+
+module DeskJockey
+  class Application < Rails::Application
+    config.generators do |g|
+      g.test_framework :rspec, fixture: false
+
+      g.template_engine false
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+    end
+
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += %W(#{config.root}/lib)
+  end
+end

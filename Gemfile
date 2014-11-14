@@ -41,3 +41,5 @@ group :test do
   gem 'vcr'
 end
 
+# Zendesk
+gem 'zendesk_api'

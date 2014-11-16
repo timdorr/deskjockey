@@ -43,7 +43,8 @@ body {
   }
 }
 
-.search-heading {
+.search-heading,
+.ticket-heading {
   margin-top: 0;
 }
 
@@ -74,4 +75,13 @@ body {
     font-size: 90%;
     line-height: 16px;
   }
+}
+
+.ticket-message {
+  height: 218px !important;
+}
+
+.ticket-thanks {
+  text-align: center;
+
 }

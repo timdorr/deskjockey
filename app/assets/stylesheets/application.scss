@@ -2,6 +2,12 @@
  *= require_self
  */
 
+$headings-font-weight: 600;
+
 @import "bourbon";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  font-family: "Open Sans", sans-serif;
+}

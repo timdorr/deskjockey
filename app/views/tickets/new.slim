@@ -1,6 +1,9 @@
 .container-fluid
   = form_tag tickets_path
     .form-group
+      label Subject
+      input.form-control type="text" name="subject" placeholder="Enter a subject for your message..."
+    .form-group
       label Message
-      textarea.form-control name="subject" placeholder="Give feedback or ask for help..."
-    button.btn.btn-primary type="submit" Submit Ticket
+      textarea.form-control name="body" placeholder="Give feedback or ask for help..."
+    button.btn.btn-primary type="submit" Send message

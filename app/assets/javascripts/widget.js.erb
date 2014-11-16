@@ -1,0 +1,54 @@
+(function() {
+
+  var zdWidget = {
+    config: {
+      links: "#zdOpenWidget"
+    },
+
+    overlay: $("<div id='zdWidgetOverlay'>"),
+    iframe:  document.createElement("iframe"),
+
+    init: function(config) {
+      $.extend(this.config, config);
+      this.resetIframe();
+      this.buildIframe();
+      this.bindLinks();
+    },
+
+    getBaseURL: function() {
+      var link = $("<a />");
+      link.attr("href", $("#zdWidgetScript").attr("src"));
+      return link.prop("protocol") + "//" + link.prop("host");
+    },
+
+    resetIframe: function() {
+      this.iframe.setAttribute("src", this.getBaseURL());
+    },
+
+    buildIframe: function(baseURL) {
+      var container = $("<div id='zdWidgetContainer'>");
+      container.append(this.iframe);
+
+      this.overlay.append(container);
+      this.overlay.removeClass("in");
+
+      $("body").append(this.overlay);
+    },
+
+    bindLinks: function() {
+      $(document).on("click", this.config.links, function(event) {
+        event.preventDefault();
+
+        zdWidget.resetIframe();
+        $("#zdWidgetOverlay").addClass("in");
+      });
+
+      this.overlay.on("click", function() {
+        zdWidget.overlay.removeClass("in");
+      });
+    }
+  };
+
+  window.zdWidget = zdWidget;
+
+})();

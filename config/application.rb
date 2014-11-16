@@ -23,5 +23,7 @@ module DeskJockey
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.assets.precompile += %w( widget.js )
   end
 end

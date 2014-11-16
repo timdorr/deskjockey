@@ -42,3 +42,36 @@ body {
     font-size: 20px;
   }
 }
+
+.search-heading {
+  margin-top: 0;
+}
+
+.search-results {
+  max-height: 292px;
+  margin-bottom: 15px;
+  overflow-y: auto;
+}
+
+.result {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #f7f9fa;
+    text-decoration: none;
+  }
+
+  .result-title {
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: underline;
+  }
+
+  .result-body {
+    color: #666;
+    font-size: 90%;
+    line-height: 16px;
+  }
+}

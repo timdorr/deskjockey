@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
   private
 
   def search_limit
-    5
+    10
   end
 
   def search_params

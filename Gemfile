@@ -8,7 +8,7 @@ gem 'rails', '4.1.7'
 gem 'puma'
 gem 'foreman', '~> 0.63.0', require: false
 gem 'dotenv-rails'
-
+gem 'rails_12factor'
 
 # Asset pipeline
 gem 'sass-rails', '5.0.0.beta1'

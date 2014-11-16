@@ -1,0 +1,7 @@
+- @results.each do |result|
+  a.media href=result["html_url"]
+    .media-body
+      h4.media-heading = result["title"]
+      = truncate strip_tags(result["body"]), length: 100, separator: " ", escape: false
+
+a.btn.btn-primary href=new_ticket_path Send a message instead

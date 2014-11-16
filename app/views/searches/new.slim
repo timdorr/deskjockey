@@ -1,7 +1,6 @@
-.container-fluid
-  = form_tag searches_path
-    = hidden_field_tag(:category, params[:category]) if params[:category]
-    .form-group: input.form-control type="text" name="query" placeholder="What are you looking for help with?"
-    button.btn.btn-primary type="submit" Search Knowledge Base
-  hr
-  a.btn.btn-primary href=new_ticket_path Send Us a Message
+= form_tag searches_path
+  = hidden_field_tag(:category, params[:category]) if params[:category]
+  .form-group: input.form-control type="text" name="query" placeholder="What are you looking for help with?"
+  button.btn.btn-primary type="submit" Search Knowledge Base
+hr
+a.btn.btn-primary href=new_ticket_path Send Us a Message

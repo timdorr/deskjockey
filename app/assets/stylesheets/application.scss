@@ -8,7 +8,37 @@ $headings-font-weight: 600;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+// Overrides
+
 body {
   font-family: "Open Sans", sans-serif;
   background-color: transparent;
+}
+
+.input-lg {
+  height: 45px;
+}
+
+// Classes
+
+.title-heading {
+  margin-top: 0;
+  text-align: center;
+}
+
+.line {
+  height: 1px;
+  margin: 30px 0;
+  background-color: #ddd;
+  text-align: center;
+
+  span {
+    position: relative;
+    top: -0.75em;
+    padding: 0 10px;
+    background-color: white;
+    color: #ddd;
+    font-size: 20px;
+  }
 }

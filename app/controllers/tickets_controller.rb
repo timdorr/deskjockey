@@ -15,8 +15,8 @@ class TicketsController < ApplicationController
         },
         requester: {
             locale_id: 1,
-            name: "Tim Dorr",
-            email: "tim.dorr@salesloft.com"
+            name: session[:name],
+            email: session[:email]
         }
     }
   end

@@ -21,8 +21,28 @@
       return link.prop("protocol") + "//" + link.prop("host");
     },
 
+    serialize: function(obj, prefix) {
+      var str = [];
+      for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+          str.push(typeof v == "object" ?
+            this.serialize(v, k) :
+          encodeURIComponent(k) + "=" + encodeURIComponent(v));
+        }
+      }
+      return str.join("&");
+    },
+
     resetIframe: function() {
-      this.iframe.setAttribute("src", this.getBaseURL());
+      var params = {
+        name: this.config.name,
+        email: this.config.email,
+        category: this.config.category,
+        fields: this.config.fields
+      };
+
+      this.iframe.setAttribute("src", this.getBaseURL() + "/?" + this.serialize(params));
     },
 
     buildIframe: function(baseURL) {

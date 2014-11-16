@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :widget
+  resources :tickets
 
-  root "widgets#show"
+  root "tickets#new"
 end

@@ -1,0 +1,6 @@
+.container-fluid
+  = form_tag searches_path
+    .form-group: input.form-control type="text" name="subject" placeholder="What are you looking for help with?"
+    button.btn.btn-primary type="submit" Search Knowledge Base
+  hr
+  a.btn.btn-primary href=new_ticket_path Send Us a Message

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  resources :searches
   resources :tickets
 
-  root "tickets#new"
+  root "searches#new"
 end

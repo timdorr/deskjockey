@@ -2,7 +2,7 @@ h4.search-heading Here's what we found:
 
 .search-results
   - @results.each do |result|
-    a.result href=result["html_url"]
+    a.result href=result["html_url"] target="_blank"
       .result-title = result["title"]
       .result-body = truncate strip_tags(result["body"]), length: 100, separator: " ", escape: false
 

@@ -10,6 +10,7 @@ class TicketsController < ApplicationController
 
   def ticket_fields
     {
+        subject: params[:subject],
         comment: {
             body: params[:body]
         },

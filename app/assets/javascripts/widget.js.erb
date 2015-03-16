@@ -10,7 +10,7 @@
 
     init: function(config) {
       $.extend(this.config, config);
-      this.resetIframe();
+      this.loadPage("/");
       this.buildIframe();
       this.bindLinks();
     },
@@ -34,15 +34,23 @@
       return str.join("&");
     },
 
-    resetIframe: function() {
+    loadPage: function(page, addlParams) {
       var params = {
         name: this.config.name,
         email: this.config.email,
         category: this.config.category,
         fields: this.config.fields
       };
+      if (addlParams) {
+        $.extend(params, addlParams);
+      }
 
-      this.iframe.setAttribute("src", this.getBaseURL() + "/?" + this.serialize(params));
+      this.iframe.setAttribute("src", this.getBaseURL() + page + "?" + this.serialize(params));
+    },
+
+    show: function(page, params) {
+      this.loadPage(page, params);
+      this.overlay.addClass("in");
     },
 
     buildIframe: function(baseURL) {
@@ -59,13 +67,16 @@
       $(document).on("click", this.config.links, function(event) {
         event.preventDefault();
 
-        zdWidget.resetIframe();
-        $("#zdWidgetOverlay").addClass("in");
+        zdWidget.show("/");
       });
 
       this.overlay.on("click", function() {
         zdWidget.overlay.removeClass("in");
       });
+    },
+
+    search: function(query) {
+      this.show("/searches", {query: query});
     }
   };
 

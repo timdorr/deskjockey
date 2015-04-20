@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.2.2'
 
-gem 'rails', '4.1.7'
+gem 'rails', '4.1.10'
 
 # Sysadmin
 gem 'puma'

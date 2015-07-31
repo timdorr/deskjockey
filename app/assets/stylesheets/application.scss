@@ -85,3 +85,9 @@ body {
   text-align: center;
 
 }
+
+.pull-right {
+  a:not(:last-child) {
+    margin-right: 1em;
+  }
+}

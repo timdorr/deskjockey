@@ -16,3 +16,47 @@ html
     .container-fluid: .row = yield
 
     = javascript_include_tag "application"
+
+  /! Zopim Live Chat
+  javascript:
+    window.$zopim || (function(d, s) {
+      var z = $zopim = function(c) {
+        z._.push(c)
+      }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+      z.set = function(o) {
+        z.set._.push(o)
+      };
+      z._ = [];
+      z.set._ = [];
+      $.async = !0;
+      $.setAttribute('charset', 'utf-8');
+      $.src = '//v2.zopim.com/?#{ENV['ZOPIM_TOKEN']}';
+      z.t = +new Date;
+      $.type = 'text/javascript';
+      e.parentNode.insertBefore($, e)
+    })(document, 'script');
+
+    // Zopim Live Chat Widget
+    $zopim(function() {
+      $zopim.livechat.set({
+        language: 'en',
+        name: 'Justin Barber',
+        email: 'justin.barber@salesloft.com'
+      });
+
+      //$zopim.livechat.addTags("cadence");
+      //if (user.account) {
+      //  $zopim.livechat.addTags(user.account.team_admin ? "Admin" : "User");
+      //  if (user.account.team) {
+      //    $zopim.livechat.addTags(user.account.team.name);
+      //  }
+      //}
+      $zopim.livechat.departments.setVisitorDepartment('Support');
+
+      $("#zopim-chat").on("click", function(event) {
+        event.preventDefault();
+        $zopim.livechat.window.show();
+      });
+    });
+
+

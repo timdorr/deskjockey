@@ -40,8 +40,8 @@ html
     $zopim(function() {
       $zopim.livechat.set({
         language: 'en',
-        name: 'Justin Barber',
-        email: 'justin.barber@salesloft.com'
+        name: "#{session[:name]}",
+        email: "#{session[:email]}"
       });
 
       //$zopim.livechat.addTags("cadence");

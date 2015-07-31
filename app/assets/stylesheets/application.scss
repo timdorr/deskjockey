@@ -49,7 +49,8 @@ body {
 }
 
 .search-results {
-  max-height: 292px;
+  min-height: 422px;
+  max-height: 422px;
   margin-bottom: 15px;
   overflow-y: auto;
 }
@@ -90,4 +91,9 @@ body {
   a:not(:last-child) {
     margin-right: 1em;
   }
+}
+
+#zopim-chat {
+  color: white;
+  font-weight: bold;
 }

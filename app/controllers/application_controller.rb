@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     session[:name] = params[:name] if params[:name].present?
     session[:email] = params[:email] if params[:email].present?
     session[:fields] = params[:fields] if params[:fields].present?
-    session[:chat] = params[:chat] if params[:chat].present?
+    session[:chat] = ENV['ZOPIM_TOKEN'] && (params[:chat] == 'true') || session[:chat]
     session[:chat_department] = params[:chat_department] if params[:chat_department].present?
     session[:chat_tags] = params[:chat_tags].split(',') if params[:chat_tags].present?
 

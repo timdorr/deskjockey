@@ -73,6 +73,9 @@ if (typeof window.zdWidget !== "undefined") {
     fields:   {
       1234567890: "some value"
     }
+    chat: true,
+    chat_tags: 'Admin,SalesLoft',
+    chat_department: 'Support'
   });
 ```
 These are the fields taken in:
@@ -80,5 +83,6 @@ These are the fields taken in:
 - `email` - The requester's email address.
 - `category` - (optional) The ID of the help center category to limit your searches to.
 - `fields` - (optional) A object of custom fields to set on the ticket. The key is the ID of the field, and the value is the value.
-
-
+- `chat` - (Defaults to false) Flag turning on Zopim Live Chat.
+- `chat_tags` - (optional) String of comma seperated tags to add to current chat session.
+- `chat_department` - (optional) Default department to direct the visitors current session.

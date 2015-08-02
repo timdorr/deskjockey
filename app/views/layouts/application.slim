@@ -18,7 +18,7 @@ html
     = javascript_include_tag "application"
 
 
-  - if ENV['ZOPIM_TOKEN'] && session[:chat]
+  - if session[:chat]
     /! Zopim Live Chat
     javascript:
       window.$zopim || (function(d, s) {

@@ -44,14 +44,13 @@ html
         email: "#{session[:email]}"
       });
 
-      //$zopim.livechat.addTags("cadence");
-      //if (user.account) {
-      //  $zopim.livechat.addTags(user.account.team_admin ? "Admin" : "User");
-      //  if (user.account.team) {
-      //    $zopim.livechat.addTags(user.account.team.name);
-      //  }
-      //}
-      $zopim.livechat.departments.setVisitorDepartment('Support');
+      $zopim.livechat.button.setHideWhenOffline('true');
+
+      var tags = #{{session[:tags].to_json}};
+      for (var index in tags){
+        $zopim.livechat.addTags(tags[index]);
+      }
+      $zopim.livechat.departments.setVisitorDepartment('#{ENV['ZOPIM_DEPARTMENT']}');
 
       $("#zopim-chat").on("click", function(event) {
         event.preventDefault();

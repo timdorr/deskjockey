@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     session[:name] = params[:name] if params[:name].present?
     session[:email] = params[:email] if params[:email].present?
     session[:fields] = params[:fields] if params[:fields].present?
+    session[:tags] = params[:tags].split(',') if params[:tags].present?
 
     if session[:name].blank? || session[:email].blank?
       response.headers.except! 'X-Frame-Options'

@@ -17,7 +17,6 @@ html
 
     = javascript_include_tag "application"
 
-
   - if session[:chat]
     /! Zopim Live Chat
     javascript:
@@ -46,7 +45,7 @@ html
           email: "#{session[:email]}",
         });
 
-        var chat_tags = #{{session[:chat_tags].to_json}};
+        var chat_tags = #{{session.fetch(:chat_tags, []).to_json}};
         for (var index in chat_tags){
           $zopim.livechat.addTags(chat_tags[index]);
         }

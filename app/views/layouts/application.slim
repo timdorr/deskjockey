@@ -17,45 +17,47 @@ html
 
     = javascript_include_tag "application"
 
-  /! Zopim Live Chat
-  javascript:
-    window.$zopim || (function(d, s) {
-      var z = $zopim = function(c) {
-        z._.push(c)
-      }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
-      z.set = function(o) {
-        z.set._.push(o)
-      };
-      z._ = [];
-      z.set._ = [];
-      $.async = !0;
-      $.setAttribute('charset', 'utf-8');
-      $.src = '//v2.zopim.com/?#{ENV['ZOPIM_TOKEN']}';
-      z.t = +new Date;
-      $.type = 'text/javascript';
-      e.parentNode.insertBefore($, e)
-    })(document, 'script');
 
-    // Zopim Live Chat Widget
-    $zopim(function() {
-      $zopim.livechat.set({
-        language: 'en',
-        name: "#{session[:name]}",
-        email: "#{session[:email]}"
+  - if ENV['ZOPIM_TOKEN'] && session[:chat]
+    /! Zopim Live Chat
+    javascript:
+      window.$zopim || (function(d, s) {
+        var z = $zopim = function(c) {
+          z._.push(c)
+        }, $ = z.s = d.createElement(s), e = d.getElementsByTagName(s)[0];
+        z.set = function(o) {
+          z.set._.push(o)
+        };
+        z._ = [];
+        z.set._ = [];
+        $.async = !0;
+        $.setAttribute('charset', 'utf-8');
+        $.src = '//v2.zopim.com/?#{ENV['ZOPIM_TOKEN']}';
+        z.t = +new Date;
+        $.type = 'text/javascript';
+        e.parentNode.insertBefore($, e)
+      })(document, 'script');
+
+      // Zopim Live Chat Widget
+      $zopim(function() {
+        $zopim.livechat.set({
+          language: 'en',
+          name: "#{session[:name]}",
+          email: "#{session[:email]}",
+        });
+
+        var chat_tags = #{{session[:chat_tags].to_json}};
+        for (var index in chat_tags){
+          $zopim.livechat.addTags(chat_tags[index]);
+        }
+
+        var chat_department = '#{session[:chat_department]}';
+        if(chat_department) {
+          $zopim.livechat.departments.setVisitorDepartment(chat_department);
+        }
+
+        $("#zopim-chat").on("click", function(event) {
+          event.preventDefault();
+          $zopim.livechat.window.show();
+        });
       });
-
-      $zopim.livechat.button.setHideWhenOffline('true');
-
-      var tags = #{{session[:tags].to_json}};
-      for (var index in tags){
-        $zopim.livechat.addTags(tags[index]);
-      }
-      $zopim.livechat.departments.setVisitorDepartment('#{ENV['ZOPIM_DEPARTMENT']}');
-
-      $("#zopim-chat").on("click", function(event) {
-        event.preventDefault();
-        $zopim.livechat.window.show();
-      });
-    });
-
-

@@ -7,4 +7,7 @@ h4.search-heading Here's what we found:
       .result-body = truncate strip_tags(result["body"]), length: 100, separator: " ", escape: false
 
 a.btn.btn-default href=new_search_path(params.slice(:category)) Go back
-a.pull-right.btn.btn-primary href=new_ticket_path Send a message instead
+.pull-right
+  - if session[:chat]
+    a#zopim-chat.btn.btn-primary href="mailto:#{ENV['ZENDESK_EMAIL']}" Live Chat
+  a.btn.btn-primary href=new_ticket_path Send a message instead

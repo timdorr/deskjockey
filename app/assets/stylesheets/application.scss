@@ -83,5 +83,15 @@ body {
 
 .ticket-thanks {
   text-align: center;
+}
 
+.app-status {
+  margin: 50px 0;
+  display: block;
+  text-align: center;
+
+  .app-status-title {
+    text-decoration: none;
+    color: #999;
+  }
 }
